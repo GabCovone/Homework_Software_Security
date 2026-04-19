@@ -3,7 +3,7 @@ context.arch='i386'
 context.os='linux'
 
 # Indirizzi trovati in GDB
-p_addr = 0xffffcffc
+p_addr = 0xffffd02c
 ptrs_addr = 0x56559094
 
 # Calcoliamo la distanza e l'indice
