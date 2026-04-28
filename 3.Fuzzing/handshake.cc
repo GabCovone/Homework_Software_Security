@@ -31,6 +31,10 @@ SSL_CTX *Init() {
 
 int main() {
   static SSL_CTX *sctx = Init();
+  __AFL_INIT();
+
+
+  while(__AFL_LOOP(1000)){
   SSL *server = SSL_new(sctx);
   BIO *sinbio = BIO_new(BIO_s_mem());
   BIO *soutbio = BIO_new(BIO_s_mem());
@@ -46,5 +50,6 @@ int main() {
 
   SSL_do_handshake(server);
   SSL_free(server);
+  }
   return 0;
 }
