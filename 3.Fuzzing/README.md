@@ -14,7 +14,7 @@ afl-fuzz -i input -o output -m none -- ./handshake
 Di default, Ubuntu invia i crash a un'app di sistema, ma questa operazione crea un piccolo ritardo. AFL testa migliaia di input al secondo e ha bisogno di rilevare i crash immediatamente. Il seguente comando disattiva la segnalazione di sistema dicendo a Linux di salvare solo un file locale di base (core).
 sudo su -c "echo core >/proc/sys/kernel/core_pattern"
 
-!(AFL_ASAN.png)
+![](AFL_ASAN.png)
 
 
 Per diagnosticare il bug, eseguiamo il programma dando in ingresso l'input che causa il crash:
@@ -150,7 +150,7 @@ int main() {
 
 
 L'output di AFL in persistent mode è il seguente:
-!(AFL_ASAN_PERS.png)
+![](AFL_ASAN_PERS.png)
 
 Per migliorare l'efficienza del fuzzer, abbiamo modificato il test harness inserendo il ciclo __AFL_LOOP(1000). Questo permette ad AFL di utilizzare la modalità Persistent Mode, evitando di ricreare un nuovo processo (tramite fork()) per ogni singolo input testato. L'inizializzazione della libreria OpenSSL (Init()) viene così eseguita una sola volta, ammortizzando enormemente i tempi di caricamento.
 
@@ -174,6 +174,6 @@ Il valore di "length" deve essere maggiore o uguale a (payload_length + 1+2+16).
 Per fixare il bug occorre inserire all'inizio della lettura il seguente controllo:
 if(s->s3->rrec.length < (payload + 1 + 2 + 16)) return 0;
 
-!(AFL_ASAN_PERS_FIX.png)
+![](AFL_ASAN_PERS_FIX.png)
 
 Come dimostra lo screenshot precedente, dopo aver lasciato in esecuzione il fuzzer in modalità persistente per oltre 10 minuti, il contatore dei "saved crashes" è rimasto a 0. Questo fornisce la prova empirica dell'efficacia della patch: qualsiasi pacchetto Heartbeat malformato generato da AFL (che dichiara un payload superiore ai byte effettivamente inviati) viene intercettato dal nuovo costrutto if e scartato silenziosamente (return 0) prima di raggiungere la memcpy fatale. L'assenza di crash e di avvisi da parte di ASAN conferma la completa e corretta mitigazione della vulnerabilità
