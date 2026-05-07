@@ -1,0 +1,7 @@
+
+#1: Aumento di salario
+test@example.com', Salary=999999, email='test@example.com
+
+
+#2: diminuzione di stipendio e cambio di password a Boby
+', Salary=1, Password = sha1('bobysucks') WHERE EID=20000 #
