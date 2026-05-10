@@ -25,8 +25,22 @@ jobs:
 
         queries: ./4.StaticAnalysis/query_github_actions/10_taint_tracking.ql
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+    - name: Install U-Boot Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential bison flex device-tree-compiler
+
+    - name: Build U-Boot (Tracciato da CodeQL)
+      run: |
+        # 1. Entra SOLO ed ESCLUSIVAMENTE nella cartella di U-Boot
+        cd 4.StaticAnalysis/u-boot/
+        
+        # 2. Configura U-Boot per una board generica (es. sandbox o qemu)
+        # Sandbox è perfetta per l'analisi statica perché non richiede cross-compilatori ARM
+        make sandbox_defconfig
+        
+        # 3. Compila il codice (CodeQL osserverà questo processo in background)
+        make -j$(nproc)
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
