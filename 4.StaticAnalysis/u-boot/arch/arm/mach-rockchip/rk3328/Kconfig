@@ -1,0 +1,32 @@
+if ROCKCHIP_RK3328
+
+choice
+	prompt "RK3328 board select"
+
+config TARGET_EVB_RK3328
+	bool "RK3328 evaluation board"
+	help
+	  RK3328evb is a evaluation board for Rockchip rk3328,
+	  with full function and phisical connectors support like
+	  usb2.0 host ports, LVDS, JTAG, MAC, SDcard, HDMI, USB-2-serial...
+
+endchoice
+
+config ROCKCHIP_BOOT_MODE_REG
+	default 0xff1005c8
+
+config SYS_SOC
+	default "rk3328"
+
+config SYS_MALLOC_F_LEN
+	default 0x2000
+
+config SPL_LIBCOMMON_SUPPORT
+	default y
+
+config SPL_LIBGENERIC_SUPPORT
+	default y
+
+source "board/rockchip/evb_rk3328/Kconfig"
+
+endif
