@@ -28,11 +28,10 @@ jobs:
     - name: Install U-Boot Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential bison flex device-tree-compiler
+        sudo apt-get install -y build-essential bison flex device-tree-compiler libsdl2-dev
 
     - name: Build U-Boot (Tracciato da CodeQL)
       run: |
-        # 1. Entra SOLO ed ESCLUSIVAMENTE nella cartella di U-Boot
         cd 4.StaticAnalysis/u-boot/
         
         # 2. Configura U-Boot per una board generica (es. sandbox o qemu)
@@ -40,7 +39,7 @@ jobs:
         make sandbox_defconfig
         
         # 3. Compila il codice (CodeQL osserverà questo processo in background)
-        make -j$(nproc)
+        make KCFLAGS="-fcommon" -j$(nproc
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
