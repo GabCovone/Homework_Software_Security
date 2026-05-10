@@ -1,0 +1,34 @@
+name: "CodeQL U-Boot Scan"
+
+on:
+  push:
+    branches: [ "main" ] 
+  workflow_dispatch:     
+jobs:
+  analyze:
+    name: Analyze C/C++
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+   
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: cpp
+
+        queries: ./4.StaticAnalysis/query_github_actions/10_taint_tracking.ql
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:cpp"
