@@ -1,5 +1,9 @@
 /**
+ * @name U-Boot RCE: Dati di rete non validati su memcpy
+ * @description I dati interi controllati dalla rete vengono passati all'argomento della lunghezza di memcpy senza validazione, portando a potenziali vulnerabilità di Remote Code Execution.
  * @kind path-problem
+ * @problem.severity critical
+ * @id cpp/uboot/unvalidated-network-memcpy
  */
 
 import cpp
