@@ -4,6 +4,7 @@ on:
   push:
     branches: [ "main" ] 
   workflow_dispatch:     
+
 jobs:
   analyze:
     name: Analyze C/C++
@@ -17,12 +18,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-   
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: cpp
-
+        # Il percorso punta correttamente alla cartella mostrata nel primo screenshot
         queries: ./4.StaticAnalysis/query_github_actions/10_taint_tracking.ql
 
     - name: Install U-Boot Dependencies
@@ -34,12 +34,11 @@ jobs:
       run: |
         cd 4.StaticAnalysis/u-boot/
         
-        # 2. Configura U-Boot per una board generica (es. sandbox o qemu)
-        # Sandbox è perfetta per l'analisi statica perché non richiede cross-compilatori ARM
+        # Configura U-Boot per l'architettura sandbox
         make sandbox_defconfig
         
-        # 3. Compila il codice (CodeQL osserverà questo processo in background)
-        make KCFLAGS="-fcommon" -j$(nproc
+        # Compila il codice aggiungendo la parentesi di chiusura a $(nproc)
+        make KCFLAGS="-fcommon" -j$(nproc)
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
