@@ -1,0 +1,123 @@
+ExecutablePath                                                                                              Name                         ProcessId  
+                                                                                                            System Idle Process          0          
+                                                                                                            System                       4          
+                                                                                                            Registry                     108        
+                                                                                                            smss.exe                     376        
+                                                                                                            csrss.exe                    472        
+                                                                                                            wininit.exe                  568        
+                                                                                                            csrss.exe                    580        
+                                                                                                            services.exe                 648        
+C:\Windows\system32\winlogon.exe                                                                            winlogon.exe                 676        
+C:\Windows\system32\lsass.exe                                                                               lsass.exe                    712        
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  852        
+C:\Windows\system32\fontdrvhost.exe                                                                         fontdrvhost.exe              884        
+C:\Windows\system32\fontdrvhost.exe                                                                         fontdrvhost.exe              880        
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  980        
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  408        
+C:\Windows\system32\dwm.exe                                                                                 dwm.exe                      804        
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1028       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1100       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1184       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1196       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1216       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1316       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1324       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1372       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1428       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1496       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1520       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1644       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1660       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1688       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1704       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1932       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  1940       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1968       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2028       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2036       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2000       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2068       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2108       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2196       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2212       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2224       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2320       
+C:\Windows\System32\spoolsv.exe                                                                             spoolsv.exe                  2488       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2512       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2616       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2764       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2772       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2888       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2900       
+                                                                                                            MpDefenderCoreService.exe    2924       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  2932       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2960       
+C:\Program Files\VMware\VMware Tools\VMware VGAuth\VGAuthService.exe                                        VGAuthService.exe            2968       
+C:\Program Files\VMware\VMware Tools\vm3dservice.exe                                                        vm3dservice.exe              2984       
+C:\Program Files\VMware\VMware Tools\vmtoolsd.exe                                                           vmtoolsd.exe                 3012       
+                                                                                                            MsMpEng.exe                  3020       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  3028       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  3036       
+C:\Program Files\VMware\VMware Tools\vm3dservice.exe                                                        vm3dservice.exe              3076       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  3112       
+C:\Windows\system32\dllhost.exe                                                                             dllhost.exe                  3656       
+C:\Windows\system32\wbem\wmiprvse.exe                                                                       WmiPrvSE.exe                 3856       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  3252       
+C:\Windows\System32\msdtc.exe                                                                               msdtc.exe                    3148       
+C:\Windows\system32\sihost.exe                                                                              sihost.exe                   2868       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  4008       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  1784       
+C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe                                         MicrosoftEdgeUpdate.exe      4144       
+C:\Windows\system32\taskhostw.exe                                                                           taskhostw.exe                4152       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  4212       
+C:\Windows\system32\DllHost.exe                                                                             dllhost.exe                  4220       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  4308       
+C:\Windows\system32\ctfmon.exe                                                                              ctfmon.exe                   4416       
+C:\Windows\Explorer.EXE                                                                                     explorer.exe                 4728       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  4992       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  5084       
+C:\Windows\system32\SearchIndexer.exe                                                                       SearchIndexer.exe            5156       
+C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe   StartMenuExperienceHost.exe  5272       
+C:\Windows\System32\RuntimeBroker.exe                                                                       RuntimeBroker.exe            5352       
+C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe                                  SearchApp.exe                5456       
+C:\Windows\System32\RuntimeBroker.exe                                                                       RuntimeBroker.exe            5572       
+C:\Windows\System32\SecurityHealthSystray.exe                                                               SecurityHealthSystray.exe    996        
+                                                                                                            SecurityHealthService.exe    3952       
+C:\Program Files\VMware\VMware Tools\vmtoolsd.exe                                                           vmtoolsd.exe                 6108       
+C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe                                                msedge.exe                   5792       
+C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe                                                msedge.exe                   4876       
+C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe                                                msedge.exe                   6172       
+C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe                                                msedge.exe                   6180       
+C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe                                                msedge.exe                   6344       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  6560       
+C:\Windows\SysWOW64\rundll32.exe                                                                            rundll32.exe                 6812       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  7020       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  7060       
+C:\Windows\system32\conhost.exe                                                                             conhost.exe                  1776       
+                                                                                                            SgrmBroker.exe               5400       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  6448       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  6484       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  748        
+                                                                                                            svchost.exe                  1340       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  2116       
+C:\Windows\SysWOW64\bitsadmin.exe                                                                           bitsadmin.exe                5116       
+C:\Windows\system32\conhost.exe                                                                             conhost.exe                  2920       
+C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.24.11321.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe  WindowsTerminal.exe          3724       
+C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.24.11321.0_x64__8wekyb3d8bbwe\OpenConsole.exe      OpenConsole.exe              4264       
+C:\Program Files\PowerShell\7\pwsh.exe                                                                      pwsh.exe                     5680       
+C:\Windows\SysWOW64\bitsadmin.exe                                                                           bitsadmin.exe                4856       
+C:\Windows\System32\oobe\UserOOBEBroker.exe                                                                 UserOOBEBroker.exe           6660       
+C:\Windows\system32\svchost.exe                                                                             svchost.exe                  3624       
+                                                                                                            svchost.exe                  5904       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  4772       
+C:\Windows\System32\svchost.exe                                                                             svchost.exe                  4904       
+                                                                                                            svchost.exe                  7072       
+C:\Windows\System32\RuntimeBroker.exe                                                                       RuntimeBroker.exe            5104       
+C:\Windows\system32\cmd.exe                                                                                 cmd.exe                      3228       
+C:\Windows\system32\conhost.exe                                                                             conhost.exe                  3208       
+C:\Windows\SysWOW64\cmd.exe                                                                                 cmd.exe                      2404       
+C:\Windows\system32\conhost.exe                                                                             conhost.exe                  2796       
+C:\Windows\SysWOW64\Wbem\WMIC.exe                                                                           WMIC.exe                     2540       
+C:\Windows\SysWOW64\more.com                                                                                more.com                     3688       
+
+

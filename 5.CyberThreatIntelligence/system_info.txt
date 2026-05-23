@@ -1,0 +1,131 @@
+OS INFORMATION: 
+
+Node,BuildNumber,Caption,InstallDate,Version
+MALWARE-VM,19044,Microsoft Windows 10 Pro,20220419132330.000000-480,10.0.19044
+ 
+PROCESS LIST: 
+
+Node,ExecutablePath,Name,ParentProcessId,ProcessId
+MALWARE-VM,,System Idle Process,0,0
+MALWARE-VM,,System,0,4
+MALWARE-VM,,Registry,4,108
+MALWARE-VM,,smss.exe,4,376
+MALWARE-VM,,csrss.exe,460,472
+MALWARE-VM,,wininit.exe,460,568
+MALWARE-VM,,csrss.exe,560,580
+MALWARE-VM,,services.exe,568,648
+MALWARE-VM,C:\Windows\system32\winlogon.exe,winlogon.exe,560,676
+MALWARE-VM,C:\Windows\system32\lsass.exe,lsass.exe,568,712
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,852
+MALWARE-VM,C:\Windows\system32\fontdrvhost.exe,fontdrvhost.exe,676,884
+MALWARE-VM,C:\Windows\system32\fontdrvhost.exe,fontdrvhost.exe,568,880
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,980
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,408
+MALWARE-VM,C:\Windows\system32\dwm.exe,dwm.exe,676,804
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1028
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1100
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1184
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1196
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1216
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1316
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1324
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1372
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1428
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1496
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1520
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1644
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1660
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1688
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1704
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1932
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,1940
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1968
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2028
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2036
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2000
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2068
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2108
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2196
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2212
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2224
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2320
+MALWARE-VM,C:\Windows\System32\spoolsv.exe,spoolsv.exe,648,2488
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2512
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2616
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2764
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2772
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2888
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2900
+MALWARE-VM,,MpDefenderCoreService.exe,648,2924
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,2932
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2960
+MALWARE-VM,C:\Program Files\VMware\VMware Tools\VMware VGAuth\VGAuthService.exe,VGAuthService.exe,648,2968
+MALWARE-VM,C:\Program Files\VMware\VMware Tools\vm3dservice.exe,vm3dservice.exe,648,2984
+MALWARE-VM,C:\Program Files\VMware\VMware Tools\vmtoolsd.exe,vmtoolsd.exe,648,3012
+MALWARE-VM,,MsMpEng.exe,648,3020
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,3028
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,3036
+MALWARE-VM,C:\Program Files\VMware\VMware Tools\vm3dservice.exe,vm3dservice.exe,2984,3076
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,3112
+MALWARE-VM,C:\Windows\system32\dllhost.exe,dllhost.exe,648,3656
+MALWARE-VM,C:\Windows\system32\wbem\wmiprvse.exe,WmiPrvSE.exe,852,3856
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,3252
+MALWARE-VM,C:\Windows\System32\msdtc.exe,msdtc.exe,648,3148
+MALWARE-VM,C:\Windows\system32\sihost.exe,sihost.exe,1428,2868
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,4008
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,1784
+MALWARE-VM,C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe,MicrosoftEdgeUpdate.exe,1216,4144
+MALWARE-VM,C:\Windows\system32\taskhostw.exe,taskhostw.exe,1216,4152
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,4212
+MALWARE-VM,C:\Windows\system32\DllHost.exe,dllhost.exe,852,4220
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,4308
+MALWARE-VM,C:\Windows\system32\ctfmon.exe,ctfmon.exe,4308,4416
+MALWARE-VM,C:\Windows\Explorer.EXE,explorer.exe,4696,4728
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,4992
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,5084
+MALWARE-VM,C:\Windows\system32\SearchIndexer.exe,SearchIndexer.exe,648,5156
+MALWARE-VM,C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe,StartMenuExperienceHost.exe,852,5272
+MALWARE-VM,C:\Windows\System32\RuntimeBroker.exe,RuntimeBroker.exe,852,5352
+MALWARE-VM,C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe,SearchApp.exe,852,5456
+MALWARE-VM,C:\Windows\System32\RuntimeBroker.exe,RuntimeBroker.exe,852,5572
+MALWARE-VM,C:\Windows\System32\SecurityHealthSystray.exe,SecurityHealthSystray.exe,4728,996
+MALWARE-VM,,SecurityHealthService.exe,648,3952
+MALWARE-VM,C:\Program Files\VMware\VMware Tools\vmtoolsd.exe,vmtoolsd.exe,4728,6108
+MALWARE-VM,C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe,msedge.exe,4728,5792
+MALWARE-VM,C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe,msedge.exe,5792,4876
+MALWARE-VM,C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe,msedge.exe,5792,6172
+MALWARE-VM,C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe,msedge.exe,5792,6180
+MALWARE-VM,C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe,msedge.exe,5792,6344
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,6560
+MALWARE-VM,C:\Windows\SysWOW64\rundll32.exe,rundll32.exe,6784,6812
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,7020
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,7060
+MALWARE-VM,C:\Windows\system32\conhost.exe,conhost.exe,1508,1776
+MALWARE-VM,,SgrmBroker.exe,648,5400
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,6448
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,6484
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,748
+MALWARE-VM,,svchost.exe,648,1340
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,2116
+MALWARE-VM,C:\Windows\SysWOW64\bitsadmin.exe,bitsadmin.exe,1508,5116
+MALWARE-VM,C:\Windows\system32\conhost.exe,conhost.exe,3880,2920
+MALWARE-VM,C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.24.11321.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe,WindowsTerminal.exe,4728,3724
+MALWARE-VM,C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.24.11321.0_x64__8wekyb3d8bbwe\OpenConsole.exe,OpenConsole.exe,3724,4264
+MALWARE-VM,C:\Program Files\PowerShell\7\pwsh.exe,pwsh.exe,3724,5680
+MALWARE-VM,C:\Windows\SysWOW64\bitsadmin.exe,bitsadmin.exe,3880,4856
+MALWARE-VM,C:\Windows\System32\oobe\UserOOBEBroker.exe,UserOOBEBroker.exe,852,6660
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,4772
+MALWARE-VM,C:\Windows\System32\svchost.exe,svchost.exe,648,4904
+MALWARE-VM,,svchost.exe,648,7072
+MALWARE-VM,C:\Windows\System32\RuntimeBroker.exe,RuntimeBroker.exe,852,5104
+MALWARE-VM,C:\Windows\system32\cmd.exe,cmd.exe,4728,3228
+MALWARE-VM,C:\Windows\system32\conhost.exe,conhost.exe,3228,3208
+MALWARE-VM,C:\Windows\system32\conhost.exe,conhost.exe,2404,2796
+MALWARE-VM,C:\Windows\SysWOW64\bitsadmin.exe,bitsadmin.exe,2404,1984
+MALWARE-VM,C:\Windows\SysWOW64\cmd.exe,cmd.exe,6812,7140
+MALWARE-VM,C:\Windows\system32\conhost.exe,conhost.exe,7140,2736
+MALWARE-VM,,svchost.exe,648,6988
+MALWARE-VM,C:\Windows\system32\svchost.exe,svchost.exe,648,5892
+MALWARE-VM,C:\Windows\SysWOW64\cmd.exe,cmd.exe,7140,2232
+MALWARE-VM,C:\Windows\SysWOW64\find.exe,find.exe,7140,3216
+MALWARE-VM,C:\Windows\SysWOW64\Wbem\WMIC.exe,WMIC.exe,2232,3388
