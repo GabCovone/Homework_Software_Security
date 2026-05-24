@@ -35,7 +35,15 @@ module MyConfig implements DataFlow::ConfigSig {
   }
 
   predicate isBarrier(DataFlow::Node node) {
-    none()
+    exists(GuardCondition guard, RelationalOperation relOp, Variable v |
+      relOp = guard
+      and
+      node.asExpr() = v.getAnAccess()
+      and
+      (relOp.getLeftOperand() = v.getAnAccess() or relOp.getRightOperand() = v.getAnAccess())
+      and
+      guard.controls(node.asExpr().getBasicBlock(), true)
+    )
   }
 }
 

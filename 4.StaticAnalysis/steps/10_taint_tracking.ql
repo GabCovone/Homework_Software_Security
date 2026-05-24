@@ -31,16 +31,20 @@ module MyConfig implements DataFlow::ConfigSig {
     )
   }
 
-  predicate isBarrier(DataFlow::Node node) {
-    exists(GuardCondition guard, Variable access |
-      // 1. The guard is a relational comparison (e.g., length <= max)
-      guard instanceof RelationalOperation
+predicate isBarrier(DataFlow::Node node) {
+    exists(GuardCondition guard, RelationalOperation relOp, Variable v |
+      // 1. Trattiamo la guardia esplicitamente come un'operazione relazionale (es. <, >, <=, >=)
+      relOp = guard
       and
-      // 2. The variable being checked is our tainted node
-      access.getAnAccess() = node.asExpr()
+      // 2. Il nodo "tainted" che stiamo tracciando è un accesso a una specifica variabile 'v'
+      node.asExpr() = v.getAnAccess()
       and
-      // 3. The guard successfully controls the basic block where the node lives
-      guard.controls(node.asExpr().getBasicBlock(), _)
+      // 3. Assicuriamoci che l'operazione relazionale stia effettivamente controllando quella stessa variabile 'v'
+      // (controllando se appare nell'operando di sinistra o di destra)
+      (relOp.getLeftOperand() = v.getAnAccess() or relOp.getRightOperand() = v.getAnAccess())
+      and
+      // 4. La guardia controlla il basic block in cui si trova il nodo (nel ramo 'true')
+      guard.controls(node.asExpr().getBasicBlock(), true)
     )
   }
 }
