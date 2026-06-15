@@ -1,0 +1,311 @@
+\chapter{Web Security}
+
+In questo modulo viene trattata la sicurezza web e in particolare i vari attacchi che è possibile effettuare all'interno di pagine web come social network e siti gestionali.
+
+\section{Cookies (CSRF)}
+
+Non appena entriamo nel sito www.example32.com, vengono mostrati tutti i cookie e i loro attributi.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/Cookie.png}
+  \caption{Visualizzazione dei cookie}
+\end{figure}
+
+Vengono definiti 3 tipi di cookies:
+\begin{itemize}
+  \item Cookie normali: cookies che non hanno nessuna tipologia di restrizione
+  \item Cookie lax: possono essere inviati in qualsiasi contesto, tranne in quello cross-site
+  \item Cookie strict: non possono essere inviati in nessun contesto cross-site
+\end{itemize}
+
+Vengono definiti 2 scenari:
+\begin{itemize}
+  \item Richiesta GET di una pagina web
+  \item Invio di un form mediante POST
+\end{itemize}
+
+\subsection{SameSite Cookies}
+
+Sia la richiesta GET che quella POST all'interno dello stesso sito possono sfruttare tutti e tre le tipologie di cookie.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/cookie_samesite_get.png}
+    \caption*{Same-Site GET}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/cookie_samesite_post.png}
+    \caption*{Same-Site POST}
+  \end{minipage}
+\end{figure}
+
+\subsection{Cross-Site Request}
+
+Per quanto riguarda la richiesta cross-site, i cookie normali e lax possono essere inviati in richieste di tipo GET. In richieste di tipo POST, solamente i cookie normali vengono inviati.
+I cookie strict non vengono inviati in nessuno dei due scenari.
+Questo perché vengono applicate le restrizioni del parametro SameSite.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/cookie_crossSite_get.png}
+    \caption*{Cross-Site GET}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/cookie_crossSite_post.png}
+    \caption*{Cross-Site POST}
+  \end{minipage}
+\end{figure}
+
+\section{XSS (Cross-Site Scripting)}
+
+Per il cross-site scripting (XSS) viene utilizzato un social network fittizio chiamato Elgg, dove sono presenti delle meccaniche di profilo e di amicizia. Tramite l'uso della descrizione del profilo, è possibile sferrare degli attacchi XSS di tipo persistente all'interno del sito. 
+
+Di default, le descrizioni dei profili sono vuote.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/XSS.png}
+  \caption{Profilo Elgg}
+\end{figure}
+
+Questo è reso possibile a causa dell'assenza di filtraggio all'interno dei campi di testo all'interno del sito.
+
+\subsection{Stored XSS Attack on POST Request}
+
+L'obiettivo finale è quello di far apparire all'interno della descrizione del profilo dell'utente vittima la scritta "Samy is my hero" tramite l'uso di JavaScript. 
+
+Viene usato un profilo apposito chiamato Samy.
+
+Il primo step consiste nell'intercettare una richiesta POST per la modifica della descrizione del profilo, questo al fine di poter:
+\begin{itemize}
+  \item Analizzare il formato del form per inserire all'interno del payload
+  \item Individuare il link a cui fare la richiesta
+\end{itemize}
+
+Per fare questo, viene utilizzato Wireshark per analizzare il traffico di rete, focalizzandoci sulle richieste e risposte di tipo HTTP.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/PostInspection.png}
+  \caption{Ispezione POST con Wireshark}
+\end{figure}
+
+Da questo possiamo notare l'uso di vari campi, tra cui:
+\begin{itemize}
+  \item \texttt{\_\_elgg\_ts}: timestamp
+  \item \texttt{\_\_elgg\_token}: token di sicurezza
+  \item \texttt{guid}: user ID
+  \item \texttt{description}: l'effettiva descrizione del profilo dove va inserito il campo di testo
+\end{itemize}
+
+Come meccanismo di sicurezza, inoltre, cerchiamo anche di ricavarci il nostro user ID, in modo da inserire il payload in altri profili al di fuori del soggetto che esegue l'attacco.
+
+Per scoprire lo user ID, usiamo un secondo account e intercettiamo la richiesta di amicizia verso Samy. Da qui si può estrarre lo user ID.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/addSamy.png}
+  \caption{Estrazione dello user ID}
+\end{figure}
+
+Una volta compilati tutti i campi, la richiesta XMLHttpRequest è pronta e può essere inserita all'interno del profilo. Lo script è contenuto in \texttt{script1.html}.
+
+Visitando il profilo di Samy con il profilo precedentemente utilizzato, possiamo notare mediante l'uso di Wireshark che, oltre alla richiesta GET per recuperare le informazioni del profilo, viene effettuata una richiesta POST per recuperare i commenti.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/AttackConfirmed.png}
+  \caption{Conferma dell'attacco}
+\end{figure}
+
+Visitando il nostro profilo, possiamo notare che la descrizione è stata modificata con successo.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/CharlieInfected.png}
+  \caption{Profilo infettato}
+\end{figure}
+
+\subsection{Self-Propagating XSS Worm}
+
+Rispetto al punto precedente, adesso l'obiettivo è quello di fare in modo che l'attacco si autopropaghi anche ad altri utenti. Per fare questo, possiamo fare in modo che il nostro script abbia un ID e venga inserito in sé stesso tramite la funzione \texttt{getElementById} e codificato tramite \texttt{encodeURIComponent}.
+
+\begin{lstlisting}
+//self-propagation  
+var headerTag = "<script id=\"worm\" type=\"text/javascript\">";
+var jsCode = document.getElementById("worm").innerHTML;
+var tailTag = "</" + "script>";
+
+// Put all the pieces together, and apply the URI encoding
+var wormCode = encodeURIComponent(headerTag + jsCode + tailTag);
+
+// Set the content of the descriptionfieldand accesslevel
+var desc = "&description=Samyismyhero" + wormCode;
+desc += "&accesslevel[description]=2";
+\end{lstlisting}
+
+Il resto è identico al punto precedente, se non ché viene inserita la variabile \texttt{desc} all'interno del campo contenente la descrizione del profilo.
+
+Possiamo provare effettuando dapprima un accesso con un altro profilo (Alice), visitando Samy.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/VisitingSamy_Post.png}
+    \caption*{Richiesta POST (Alice $\to$ Samy)}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/Alice_Infected.png}
+    \caption*{Profilo Infetto (Alice)}
+  \end{minipage}
+\end{figure}
+
+E poi con un altro profilo ancora (Boby), visitando Alice.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/visitingAlice_post.png}
+    \caption*{Richiesta POST (Boby $\to$ Alice)}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/Boby_Infected.png}
+    \caption*{Profilo Infetto (Boby)}
+  \end{minipage}
+\end{figure}
+
+\subsection{Content-Security-Policy}
+
+Al fine di evitare l'esecuzione di script arbitrari, è possibile utilizzare la Content Security Policy (CSP), un livello di sicurezza aggiuntivo che aiuta a rilevare e mitigare alcuni tipi di attacchi, tra cui XSS.
+
+Di seguito vengono analizzati due scenari di configurazione:
+
+\subsubsection{Scenario 1: Configurazione tramite Apache (example32b)}
+In questo scenario, la policy viene definita direttamente nel file di configurazione di Apache (\texttt{apache\_csp\_example32.conf}). È stata utilizzata la direttiva \texttt{unsafe-inline} all'interno di \texttt{script-src}, che permette l'esecuzione di script inline nel sito.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/example32b_example32c_before.png}
+    \caption*{Prima dell'applicazione CSP}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/example32b_after.png}
+    \caption*{Dopo (example32b - unsafe-inline)}
+  \end{minipage}
+\end{figure}
+
+\subsubsection{Scenario 2: Configurazione granulare tramite Hash (example32c)}
+Per una maggiore sicurezza, è preferibile evitare \texttt{unsafe-inline} e autorizzare solo script specifici tramite il loro hash SHA-256. In \texttt{CSPexamplec.php}, sono stati inseriti gli hash delle componenti identificate (come mostrato in \texttt{sha\_button.png}) per permetterne l'esecuzione in modo selettivo.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/sha_button.png}
+    \caption*{Identificazione Hash (Console)}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/example32c_after.png}
+    \caption*{Dopo (example32c - SHA-256)}
+  \end{minipage}
+\end{figure}
+
+\section{SQL Injection}
+
+Un'altra categoria di attacchi ad applicazioni web è rappresentata dall'SQL Injection, ossia dalla possibilità di poter alterare campi di tabelle di un database nel web facendo ricorso alla sintassi SQL.
+
+\subsection{Modify Table}
+
+L'obiettivo dell'attacco è di:
+\begin{enumerate}
+  \item Aumentare il salario di un utente
+  \item Diminuire il salario di un secondo utente, e cambiare la sua password.
+\end{enumerate}
+
+Il profilo si presenta in questo modo:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/sql_aliceprofile_before.png}
+  \caption{Profilo di Alice (Prima)}
+\end{figure}
+
+All'interno del sito è presente una funzione di modifica, che ci permette di poter modificare solo alcuni campi specifici. Tra questi, non è compreso il salario. Per fare questo, bisogna iniettare il campo del salario, e far sì che il sistema lo interpreti comunque come una query legittima.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../2.WebSecurity/img/sql_aliceprofile_edit.png}
+  \caption{Modifica del profilo di Alice}
+\end{figure}
+
+In questo caso, inseriamo due query:
+
+\begin{lstlisting}[language=SQL]
+#1: Aumento di salario
+test@example.com', Salary=999999, email='test@example.com
+
+#2: diminuzione di stipendio e cambio di password a Boby
+', Salary=1, Password = sha1('bobysucks') WHERE EID=20000 #
+\end{lstlisting}
+
+Per il primo caso, siccome si tratta di una modifica allo stesso profilo, possiamo inserire la modifica in maniera diretta all'interno del campo email. Mentre nel secondo caso, invece, viene aggiunta la condizione \texttt{WHERE} al fine di apportare modifiche anche ad altri profili. Si noti l'uso di \texttt{\#} per commentare il resto della query.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/sql_aliceprofile_after.png}
+    \caption*{Profilo Alice (Salario aumentato)}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../2.WebSecurity/img/sql_bobyprofile_after.png}
+    \caption*{Profilo Boby (Salario ridotto)}
+  \end{minipage}
+\end{figure}
+
+\subsection{Prepared Statements}
+
+I \textbf{Prepared Statements} sono la difesa principale contro l'SQL Injection perché separano la struttura del comando SQL dai dati inseriti dall'utente.
+
+Invece di unire tutto in una singola stringa, il processo avviene in due fasi:
+\begin{enumerate}
+  \item \textbf{Template}: Si invia al database lo schema della query usando dei segnaposti (\texttt{?}).
+\begin{lstlisting}[language=SQL]
+SELECT id, name, eid, salary, ssn FROM credential WHERE name= ? and Password= ?
+\end{lstlisting}
+  \item \textbf{Dati}: I valori (come username o password) vengono inviati separatamente.
+\end{enumerate}
+
+Grazie a questa separazione, il database tratta i dati dell'utente esclusivamente come testo. Anche se un attaccante inserisce caratteri speciali (come \texttt{'}, \texttt{;} o \texttt{\#}), questi non potranno mai alterare il comando SQL originale.
+
+\subsubsection{Confronto tecnico: \texttt{unsafe.php} vs \texttt{prepared\_statement.php}}
+
+\begin{itemize}
+  \item \textbf{In \texttt{unsafe.php}}: La query viene costruita concatenando i dati utente direttamente nella stringa. Questo è vulnerabile perché il database non distingue tra il comando e i dati.
+\begin{lstlisting}[language=PHP]
+// VULNERABILE: query diretta con variabili concatenate
+$conn->query("... WHERE name= '$input_uname' ...");
+\end{lstlisting}
+  \item \textbf{In \texttt{prepared\_statement.php}}: Viene inviata prima la struttura della query e poi i dati. Il database sa già che i dati in arrivo sono semplici valori letterali.
+\begin{lstlisting}[language=PHP]
+// SICURO: query preparata con segnaposti
+$stmt = $conn->prepare("... WHERE name= ? ...");
+$stmt->bind_param("s", $input_uname);
+\end{lstlisting}
+\end{itemize}

@@ -2,3 +2,16 @@ desktop.ini
 *.gdb_history
 *payload.dll
 
+# LaTeX temporary files
+*.aux
+*.bcf
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.toc
+*.log
+*.out
+*.synctex.gz
+*.blg
+*.bbl
+
